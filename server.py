@@ -16,9 +16,9 @@ while True:
     connectionSocket, addr =  serverSocket.accept() 
             
     try:
-        message = serverSocket.recv(10000)               
-        filename = message.split()[1]                 
-        f = open(filename[1:])
+        message = connectionSocket.recv(10000)     
+        filename = message.split()[1] 
+        f = open(filename)
         outputdata = f.readlines()
                   
         # Send one HTTP header line into socket
@@ -26,7 +26,8 @@ while True:
 
         # Send the content of the requested file to the client
         for i in range(0, len(outputdata)):           
-            connectionSocket.send(outputdata[i].encode())
+        	connectionSocket.send(outputdata[i].encode())
+
         connectionSocket.send("\r\n".encode())
         
         connectionSocket.close()
