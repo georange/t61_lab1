@@ -6,7 +6,7 @@ serverSocket = socket(AF_INET, SOCK_STREAM)
 
 # Prepare a server socket
 
-# Figure out IP of hosting server
+# Figure out IP of hosting server	# sudo mn -x  	to start server
 serverSocket.bind(("",9000)) 		# binds to all addresses in ifconfig 	#local loopback is 127.0.0.1
 serverSocket.listen(1)          
 
