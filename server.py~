@@ -6,9 +6,9 @@ serverSocket = socket(AF_INET, SOCK_STREAM)
 
 # Prepare a server socket
 
-# Figure out IP of hosting server
-serverSocket.bind(("",9000)) 		# binds to all addresses in ifconfig 	#local loopback is 127.0.0.1
-serverSocket.listen(1)          
+# Figure out IP of hosting server	# sudo mn -x  	to start server
+serverSocket.bind(("",9000)) 		# binds to all addresses in ifconfig 	#local loopback is 10.0.0.2
+serverSocket.listen(5)          
 
 while True:
     # Establish the connection
@@ -22,7 +22,7 @@ while True:
         outputdata = f.readlines()
                   
         # Send one HTTP header line into socket
-        connectionSocket.send("HTTP/1.1 200 OK\r\n\r\n")
+        connectionSocket.send("HTTP/1.1 200 OK\r\n\r\n\n")
 
         # Send the content of the requested file to the client
         for i in range(0, len(outputdata)):           
